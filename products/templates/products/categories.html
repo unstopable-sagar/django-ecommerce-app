@@ -1,0 +1,51 @@
+{% extends 'adminspage/adminlayout.html' %}
+{% load static %}
+{% block title %}
+<title>Products</title>
+{% endblock %}
+
+{% block main_content %}
+<!-- {% include 'products/header.html' %} -->
+
+<div class="container mt-2">
+    <h1 class="text-center">All Categories</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% elif msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% endfor %}
+            <table class="table table-bordered table-striped border-dark">
+                <tr>
+                    <th>Category name</th>
+                    <th>Category image</th>
+                    <th>Action</th>
+                </tr>
+                {% for item in category %}
+                <tr>
+                    <td>{{item.category_name}}</td>
+                    <td><img src="/{{item.category_image}}" alt="{{item.category_name}}" height="100"></td>
+                    <td>
+                        <a href="/updatecategory/{{item.id}}" class="btn btn-primary">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a href="/delete_category/{{item.id}}" class="btn btn-danger" onclick="return confirm('Are you sure? All products belonging to this category will also be removed!')">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% include 'products/footer.html' %}
+{% endblock %}

@@ -1,0 +1,8 @@
+.asteriskField{
+    color: red;
+}
+.flex-custom-width {
+    /* flex: 1;  or specify width using flex-basis or other flexbox properties */
+    width: 130px !important; /* or any specific width you want */
+    margin-left: 10px;
+}

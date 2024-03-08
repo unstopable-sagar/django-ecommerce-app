@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block main_content %}
+{% include 'products/header.html' %}
+
+
+<div class="container-fluid mt-2">
+    <h1 class="text-center">Let us make your life better...</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for category in categories %}
+        <div class="col">
+            <div class="card">
+                <img src="/{{category.category_image}}" class="card-img-top" alt="{{category.category_name}}" height="300"
+                    width="300">
+                <div class="card-body">
+                    <h5 class="card-title">{{category.category_name}}</h5>
+                    <a href="/category/{{category.id}}/products" class="btn btn-primary">View more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'products/footer.html' %}
+{% endblock %}

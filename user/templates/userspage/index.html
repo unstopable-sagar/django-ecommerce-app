@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block main_content %}
+{% include 'products/header.html' %}
+
+<!-- start of carousel -->
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/products1.png' %}" class="d-block w-100" alt="..." height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/products2.png' %}" class="d-block w-100" alt="..." height="500">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/products3.jpg' %}" class="d-block w-100" alt="..." height="500">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<!-- end of carousel -->
+
+
+<div class="container-fluid mt-2">
+    <h1 class="text-center">Let us make your life better...</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for category in categories %}
+        <div class="col">
+            <div class="card">
+                <img src="/{{category.category_image}}" class="card-img-top" alt="{{category.category_name}}" height="300"
+                    width="300">
+                <div class="card-body">
+                    <h5 class="card-title">{{category.category_name}}</h5>
+                    <a href="/{{category.id}}/products" class="btn btn-primary">View more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'products/footer.html' %}
+{% endblock %}

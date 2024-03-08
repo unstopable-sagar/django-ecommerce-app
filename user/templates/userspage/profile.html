@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>My profile</title>
+{% endblock %}
+
+{% block main_content %}
+{% include 'products/header.html' %}
+<div class="container mt-5">
+    <!-- <div class="row d-flex justify-content-between align-items-center"> -->
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success">
+                {{msg}}
+            </div>
+            {% endif %}
+
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger">
+                {{msg}}
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            <!-- Firstname: {{user.first_name}}
+            Lastname: {{user.last_name}}
+            Username: {{user.username}}
+            Email: {{user.email}} -->
+            <table class="table table-striped table-bordered ">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <td>{{user.first_name}} {{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </table>
+
+            <a href="/updateprofile" class="btn btn-warning">Update profile</a>
+            
+        </div>
+    </div>
+</div>
+
+{% include 'products/footer.html' %}
+{% endblock %}

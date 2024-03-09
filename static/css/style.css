@@ -2,7 +2,29 @@
     color: red;
 }
 .flex-custom-width {
-    /* flex: 1;  or specify width using flex-basis or other flexbox properties */
-    width: 130px !important; /* or any specific width you want */
+    width: 130px !important;
     margin-left: 10px;
 }
+
+.carousel .carousel-inner img{
+    /* height:400px;
+    width:900px !important; */
+    /* object-fit: cover;
+    object-position: center; */
+}
+
+.my-custom-container{
+    height:400px;
+    /* width:800px !important; */
+    margin-bottom: 10px;
+    /* border: 2px solid red; */
+    overflow: hidden;
+}
+@media screen and (max-width: 580px) {
+    .my-custom-container{
+        height:250px;
+        width:300px !important;
+        overflow: hidden;
+        border: 2px solid blue;
+    }
+  }
